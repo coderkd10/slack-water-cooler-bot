@@ -68,7 +68,7 @@ def getMeetingUrl():
     payload = {
         "topic": "chilling at the water cooler!",
         # keeping type: scheduled meeting
-        # if we use instant meeting then people can't join with the host
+        # if we use instant meeting then people can't join without the host
         "type": 2,
         "ageda": "just some random water cooler conversations!",
         "settings": {
