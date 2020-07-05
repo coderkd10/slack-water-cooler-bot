@@ -1,0 +1,12 @@
+{
+    "slack": {
+        "webhook_url": <add your slack WEBHOOK URL here. required to send messages to slack>,
+        "channel": <add channel to send messages to>,
+        "username": "water-cooler-bot",
+        "icon_emoji": ":water-cooler:"
+    },
+    "zoom": {
+        "api_key": <add zoom API KEY here>,
+        "api_secret": <add zoom API SECRET here>
+    }
+}
