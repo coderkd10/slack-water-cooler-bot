@@ -6,7 +6,7 @@ import utils
 import zoom
 import topics as topicGenerator
 
-logger = utils.createLogger(__file__)
+logger = utils.createLogger("bot")
 
 config = utils.loadConfig()
 if "slack" not in config:

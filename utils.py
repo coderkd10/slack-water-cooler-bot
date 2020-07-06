@@ -1,5 +1,5 @@
 import logging
-import json
+import yaml
 import sys
 
 def createLogger(name, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'):
@@ -12,11 +12,11 @@ def createLogger(name, format='%(asctime)s - %(name)s - %(levelname)s - %(messag
     logger.addHandler(ch)
     return logger
 
-def loadConfig(filename="config.json"):
+def loadConfig(filename="config.yml"):
     try:
         with open(filename, "rb") as f:
-            j = json.load(f)
+            config = yaml.safe_load(f)
     except FileNotFoundError:
         print("Could not read the configuration file - {}. Make sure it exits in the current directory and is readable.".format(filename))
         sys.exit(1)
-    return j
+    return config

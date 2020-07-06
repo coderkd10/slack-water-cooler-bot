@@ -8,7 +8,7 @@ import time
 import utils
 import sys
 
-logger = utils.createLogger(__file__)
+logger = utils.createLogger("zoom")
 
 ZOOM_USERS_API_URL = "https://api.zoom.us/v2/users/"
 ZOOM_CREATE_MEETING_API_URL = "https://api.zoom.us/v2/users/{userId}/meetings"
