@@ -17,5 +17,7 @@ if __name__ == "__main__":
     logger.info("starting water cooler bot...")
     shouldScheduleToday, delay_seconds = scheduling.getTodaySchedule()
     if shouldScheduleToday:
+        logger.info("sleeping for {:.1f} seconds".format(delay_seconds))
         time.sleep(delay_seconds)
         bot.ping()
+        logger.info("sent message to slack channel successfully!")
