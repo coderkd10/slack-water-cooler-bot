@@ -1,6 +1,7 @@
 import logging
 import yaml
 import sys
+from os import path
 
 def createLogger(name, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'):
     logger = logging.getLogger(name)
@@ -14,9 +15,10 @@ def createLogger(name, format='%(asctime)s - %(name)s - %(levelname)s - %(messag
 
 def loadConfig(filename="config.yml"):
     try:
-        with open(filename, "rb") as f:
+        config_path = path.join( path.dirname(__file__), filename )
+        with open(config_path, "rb") as f:
             config = yaml.safe_load(f)
     except FileNotFoundError:
-        print("Could not read the configuration file - {}. Make sure it exits in the current directory and is readable.".format(filename))
+        print("Could not read the configuration file - {}. Make sure it exits and is readable.".format(config_path))
         sys.exit(1)
     return config
