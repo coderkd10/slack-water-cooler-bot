@@ -13,11 +13,11 @@ scheduling:
   local_timezone: 'Asia/Kolkata'
   # days of the week during which this could get triggered 
   # mapping - M: 1, Tu:2, W:3, Th:4, F:5, Sat:6, Sun:7 
-  working_days: [ 1, 2, 3, 4 ]
+  working_days: [ 1, 3, 4 ]
   # hours between which slack message could get triggered
   # e.g. 11:30 AM - 1 PM, 3 PM - 6 PM
   working_hours:
-    - start: 11.5
-      end: 13
+    # - start: 11.5
+    #   end: 13
     - start: 15
       end: 18
