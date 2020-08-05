@@ -14,6 +14,12 @@ except pytz.UnknownTimeZoneError:
     logger.error("timezone {} not found in tz data. make sure it is in the list - https://en.wikipedia.org/wiki/List_of_tz_database_time_zones")
     sys.exit(1)
 working_days = scheduling_config["working_days"]
+min_days_per_week = scheduling_config.get("min_days_per_week", 1)
+if min_days_per_week == -1:
+    min_days_per_week = len(working_days)
+if min_days_per_week < 0 or min_days_per_week > len(working_days):
+    logger.error("min_days_per_work should be in [0, len(working_days)] or -1")
+    sys.exit(1)
 working_hours = scheduling_config["working_hours"]
 if len(working_hours) == 0:
     logger.error("working hours must contain atleast one start-end period")
@@ -50,7 +56,7 @@ def getTodaySchedule():
     # at random pick number of days to schedule this week
     seed = (year*100 + week)*10
     rng = random.Random(seed)
-    num_days_this_week = rng.randint(1, len(working_days))
+    num_days_this_week = rng.randint(min_days_per_week, len(working_days))
     selected_days_this_week = sorted(rng.sample(working_days, num_days_this_week))
     logger.info("days for scheduling this week - {} [today's weekday = {}]".format(selected_days_this_week, weekday))
     if weekday not in selected_days_this_week:
