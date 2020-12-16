@@ -25,7 +25,7 @@ BOT_ICON_EMOJI = slack_conf.get("icon_emoji", ":water-cooler:")
 def ping(num_topics=3):
     topics = [topicGenerator.generateTopic() for _ in range(num_topics)]
     meetingUrl = zoom.getMeetingUrl()
-    msg = "<!channel> You must be really thirsty, its time to get a glass of water! :glass_of_milk:\n" +\
+    msg = "You must be really thirsty, its time to get a glass of water! :glass_of_milk:\n" +\
             "Gather around the water cooler ya folks - {}\n\n".format(meetingUrl) +\
             "While you're at it, here are some topics that you may find interesting to discuss -\n" +\
             "\n".join(["{}. {}".format(i+1, topic) for i, topic in enumerate(topics)])
